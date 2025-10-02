@@ -156,7 +156,12 @@ public class KafkaUserOperator {
     private CompletionStage<Set<String>> getAllKafkaUserUsernames(String namespace)  {
         return kafkaUserCrdOperator.listAsync(namespace, Labels.fromMap(selector.getMatchLabels()))
             .thenApply(users -> users.stream()
-                    .map(resource -> resource.getMetadata().getName())
+                    .map(
+                            resource -> {
+                                KafkaUser kafkaUser = (KafkaUser) resource;
+                                String username = kafkaUser.getSpec().getUserName();
+                                return (username != null && !username.isEmpty()) ? username : kafkaUser.getMetadata().getName();
+                            })
                     .collect(Collectors.toSet()));
     }
 

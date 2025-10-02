@@ -162,8 +162,14 @@ public class KafkaUserModel {
      */
     private static void validateTlsUsername(KafkaUser user)  {
         if (user.getSpec().getAuthentication() instanceof KafkaUserTlsClientAuthentication) {
-            if (user.getMetadata().getName().length() > OpenSslCertManager.MAXIMUM_CN_LENGTH)    {
-                throw new InvalidResourceException("Users with TLS client authentication can have a username (name of the KafkaUser custom resource) only up to 64 characters long.");
+            if (user.getSpec().getUserName() != null) {
+                if (user.getSpec().getUserName().length() > OpenSslCertManager.MAXIMUM_CN_LENGTH) {
+                    throw new InvalidResourceException("Users with TLS client authentication can have a username only up to 64 characters long.");
+                }
+            } else {
+                if (user.getMetadata().getName().length() > OpenSslCertManager.MAXIMUM_CN_LENGTH)    {
+                    throw new InvalidResourceException("Users with TLS client authentication can have a username (name of the KafkaUser custom resource) only up to 64 characters long.");
+                }
             }
         }
     }

@@ -217,6 +217,9 @@ spec:
                         description: Metadata applied to the resource.
                     description: Template for KafkaUser resources. The template allows users to specify how the `Secret` with password or TLS certificates is generated.
                 description: Template to specify how Kafka User `Secrets` are generated.
+              userName:
+                type: string
+                description: The name of the user. When absent this will default to the metadata.name of the user. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.
             description: The specification of the user.
           status:
             type: object
@@ -449,6 +452,9 @@ spec:
                         description: Metadata applied to the resource.
                     description: Template for KafkaUser resources. The template allows users to specify how the `Secret` with password or TLS certificates is generated.
                 description: Template to specify how Kafka User `Secrets` are generated.
+              userName:
+                type: string
+                description: The name of the user. When absent this will default to the metadata.name of the user. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.
             description: The specification of the user.
           status:
             type: object
@@ -681,6 +687,9 @@ spec:
                         description: Metadata applied to the resource.
                     description: Template for KafkaUser resources. The template allows users to specify how the `Secret` with password or TLS certificates is generated.
                 description: Template to specify how Kafka User `Secrets` are generated.
+              userName:
+                type: string
+                description: The name of the user. When absent this will default to the metadata.name of the user. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.
             description: The specification of the user.
           status:
             type: object

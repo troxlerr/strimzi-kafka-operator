@@ -18,11 +18,11 @@ import lombok.ToString;
         builderPackage = Constants.FABRIC8_KUBERNETES_API
 )
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "authentication", "authorization", "quotas", "template" })
+@JsonPropertyOrder({ "username", "authentication", "authorization", "quotas", "template" })
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class KafkaUserSpec extends Spec {
-    private String userName;
+    private String username;
     private KafkaUserAuthentication authentication;
     private KafkaUserAuthorization authorization;
     private KafkaUserQuotas quotas;
@@ -33,11 +33,11 @@ public class KafkaUserSpec extends Spec {
             "It is recommended to not set this unless the topic name is not a " +
             "valid Kubernetes resource name.")
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     @Description("Authentication mechanism enabled for this Kafka user. " +
