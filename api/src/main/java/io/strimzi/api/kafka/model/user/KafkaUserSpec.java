@@ -32,11 +32,11 @@ public class KafkaUserSpec extends Spec {
             "When absent this will default to the metadata.name of the user. " +
             "It is recommended to not set this unless the topic name is not a " +
             "valid Kubernetes resource name.")
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

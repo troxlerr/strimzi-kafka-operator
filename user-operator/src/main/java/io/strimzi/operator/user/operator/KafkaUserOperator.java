@@ -159,7 +159,7 @@ public class KafkaUserOperator {
                     .map(
                             resource -> {
                                 KafkaUser kafkaUser = (KafkaUser) resource;
-                                String username = kafkaUser.getSpec().getUserName();
+                                String username = kafkaUser.getSpec().getUsername();
                                 return (username != null && !username.isEmpty()) ? username : kafkaUser.getMetadata().getName();
                             })
                     .collect(Collectors.toSet()));

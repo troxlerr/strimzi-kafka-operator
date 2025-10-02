@@ -115,9 +115,9 @@ public class KafkaUserModel {
                                          String secretPrefix,
                                          boolean aclsAdminApiSupported) {
         KafkaUserModel result;
-        if (kafkaUser.getSpec().getUserName() != null) {
+        if (kafkaUser.getSpec().getUsername() != null) {
             result = new KafkaUserModel(kafkaUser.getMetadata().getNamespace(),
-                    kafkaUser.getSpec().getUserName(),
+                    kafkaUser.getSpec().getUsername(),
                     Labels.fromResource(kafkaUser).withStrimziKind(kafkaUser.getKind()),
                     secretPrefix);
         } else {
@@ -162,8 +162,8 @@ public class KafkaUserModel {
      */
     private static void validateTlsUsername(KafkaUser user)  {
         if (user.getSpec().getAuthentication() instanceof KafkaUserTlsClientAuthentication) {
-            if (user.getSpec().getUserName() != null) {
-                if (user.getSpec().getUserName().length() > OpenSslCertManager.MAXIMUM_CN_LENGTH) {
+            if (user.getSpec().getUsername() != null) {
+                if (user.getSpec().getUsername().length() > OpenSslCertManager.MAXIMUM_CN_LENGTH) {
                     throw new InvalidResourceException("Users with TLS client authentication can have a username only up to 64 characters long.");
                 }
             } else {

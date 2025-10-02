@@ -58,7 +58,7 @@ spec:
           spec:
             type: object
             properties:
-              userName:
+              username:
                 type: String
                 description: "The name of the user. When absent this will default to the metadata.name of the user. It is recommended to not set this unless the user name is not a valid Kubernetes resource name."
               authentication:
@@ -293,7 +293,7 @@ spec:
           spec:
             type: object
             properties:
-              userName:
+              username:
                 type: string
                 description: "The name of the user. When absent this will default to the metadata.name of the user. It is recommended to not set this unless the user name is not a valid Kubernetes resource name."
               authentication:
@@ -528,7 +528,7 @@ spec:
           spec:
             type: object
             properties:
-              userName:
+              username:
                 type: string
                 description: "The name of the user. When absent this will default to the metadata.name of the user. It is recommended to not set this unless the user name is not a valid Kubernetes resource name."
               authentication:
